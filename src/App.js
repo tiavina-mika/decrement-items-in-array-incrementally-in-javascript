@@ -14,8 +14,8 @@ const lots = [
   },
   {
     createdAt: "2022-01-24T16:08:10.812Z",
-    quantity: 0,
-    // "quantity": 13,
+    // quantity: 0,
+    quantity: 13,
     name: "lot3"
   },
   {
@@ -34,11 +34,11 @@ const sortedLots = lots.sort(
  * decrement lots quantity
  * if the current decremented lot is equal to 0, decrement the next lot
  */
-const computeQuantity = (array, volume) => {
+const decrementLotsQuantity = (lots, volume) => {
   let quantity = volume;
-  const newArr = cloneDeep(array);
+  const lotsCopy = cloneDeep(lots);
 
-  for (let [index, item] of newArr.entries()) {
+  for (let [index, item] of lotsCopy.entries()) {
     if (item.quantity >= quantity) {
       item.quantity = item.quantity - quantity;
       quantity = quantity - item.quantity;
@@ -50,19 +50,19 @@ const computeQuantity = (array, volume) => {
       quantity = quantity - item.quantity;
       item.quantity = 0;
 
-      if (array[index].quantity !== item.quantity) {
+      if (lots[index].quantity !== item.quantity) {
         // this item should be updated in the database
         console.log("updated to 0", item);
       }
     }
   }
-  return newArr;
+  return lotsCopy;
 };
 
 console.table("input", sortedLots);
 // console.log('input', sortedLots.map(m => m.quantity))
 
-const result = computeQuantity(sortedLots, 11);
+const result = decrementLotsQuantity(sortedLots, 20);
 console.table("output", result);
 
 export default function App() {
