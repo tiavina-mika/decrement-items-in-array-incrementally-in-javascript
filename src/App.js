@@ -38,21 +38,21 @@ const decrementLotsQuantity = (lots, volume) => {
   let quantity = volume;
   const lotsCopy = cloneDeep(lots);
 
-  for (let [index, item] of lotsCopy.entries()) {
-    if (item.quantity >= quantity) {
-      item.quantity = item.quantity - quantity;
-      quantity = quantity - item.quantity;
+  for (let [index, lot] of lotsCopy.entries()) {
+    if (lot.quantity >= quantity) {
+      lot.quantity = lot.quantity - quantity;
+      quantity = quantity - lot.quantity;
 
-      // this item should be updated in the database
-      console.log("updated to decremented", item);
+      // this lot should be updated in the database
+      console.log("updated to decremented", lot);
       break;
     } else {
-      quantity = quantity - item.quantity;
-      item.quantity = 0;
+      quantity = quantity - lot.quantity;
+      lot.quantity = 0;
 
-      if (lots[index].quantity !== item.quantity) {
-        // this item should be updated in the database
-        console.log("updated to 0", item);
+      if (lots[index].quantity !== lot.quantity) {
+        // this lot should be updated in the database
+        console.log("updated to 0", lot);
       }
     }
   }
