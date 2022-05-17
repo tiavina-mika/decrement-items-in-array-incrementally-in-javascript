@@ -40,8 +40,17 @@ const decrementLotsQuantity = (lots, volume) => {
 
   for (let [index, lot] of lotsCopy.entries()) {
     if (lot.quantity >= quantity) {
-      lot.quantity = lot.quantity - quantity;
-      quantity = quantity - lot.quantity;
+      lotsCopy[index].quantity = lotsCopy[index].quantity - quantity;
+      quantity = quantity - lotsCopy[index].quantity;
+
+      // lot.quantity = lot.quantity - quantity;
+      // quantity = quantity - lot.quantity;
+
+      const newLot = { name: lotsCopy[index].name + "Mod" };
+      lotsCopy[index] = {
+        ...lotsCopy[index],
+        ...newLot
+      };
 
       // this lot should be updated in the database
       console.log("updated to decremented", lot);
@@ -51,7 +60,12 @@ const decrementLotsQuantity = (lots, volume) => {
       lot.quantity = 0;
 
       if (lots[index].quantity !== lot.quantity) {
+        const newLot = { name: lotsCopy[index].name + "Mod" };
         // this lot should be updated in the database
+        lotsCopy[index] = {
+          ...lotsCopy[index],
+          ...newLot
+        };
         console.log("updated to 0", lot);
       }
     }
