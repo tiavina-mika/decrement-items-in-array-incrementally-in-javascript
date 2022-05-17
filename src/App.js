@@ -5,23 +5,28 @@ const lots = [
   {
     createdAt: "2022-02-24T16:00:55.186Z",
     quantity: 5,
-    name: "lot1"
+    name: "lot1",
+    dlc: "06/05/2022"
+    // dlc: 1672012800000
   },
   {
     createdAt: "2022-02-23T16:05:00.342Z",
     quantity: 6,
-    name: "lot2"
+    name: "lot2",
+    dlc: "26/12/2022"
   },
   {
     createdAt: "2022-01-24T16:08:10.812Z",
     // quantity: 0,
     quantity: 13,
-    name: "lot3"
+    name: "lot4",
+    dlc: "02/02/2022"
   },
   {
     createdAt: "2021-02-24T15:43:53.380Z",
     quantity: 4,
-    name: "lot4"
+    name: "lot3",
+    dlc: "26/12/2022"
   }
 ];
 
