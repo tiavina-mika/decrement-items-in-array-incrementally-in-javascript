@@ -6,7 +6,7 @@ const lots = [
     createdAt: "2022-02-24T16:00:55.186Z",
     quantity: 5,
     name: "lot1",
-    dlc: "06/05/2022"
+    dlc: "02/02/2022"
     // dlc: 1672012800000
   },
   {
@@ -20,13 +20,13 @@ const lots = [
     // quantity: 0,
     quantity: 13,
     name: "lot4",
-    dlc: "02/02/2022"
+    dlc: "26/12/2022"
   },
   {
     createdAt: "2021-02-24T15:43:53.380Z",
     quantity: 4,
     name: "lot3",
-    dlc: "26/12/2022"
+    dlc: "06/05/2022"
   }
 ];
 
@@ -45,6 +45,8 @@ const decrementLotsQuantity = (lots, volume) => {
 
   for (let [index, lot] of lotsCopy.entries()) {
     if (lot.quantity >= quantity) {
+      // if (lot.quantity >= quantity) {
+
       lotsCopy[index].quantity = lotsCopy[index].quantity - quantity;
       quantity = quantity - lotsCopy[index].quantity;
 
@@ -58,7 +60,7 @@ const decrementLotsQuantity = (lots, volume) => {
       };
 
       // this lot should be updated in the database
-      console.log("updated to decremented", lot);
+      console.log("last updated line", lot);
       break;
     } else {
       quantity = quantity - lot.quantity;
@@ -81,7 +83,7 @@ const decrementLotsQuantity = (lots, volume) => {
 console.table("input", sortedLots);
 // console.log('input', sortedLots.map(m => m.quantity))
 
-const result = decrementLotsQuantity(sortedLots, 20);
+const result = decrementLotsQuantity(sortedLots, 18);
 console.table("output", result);
 
 export default function App() {
